@@ -1,0 +1,19 @@
+# gstack-antigravity
+
+> A toolkit of 25 AI personas for non-technical founders to build software via natural language.
+
+## Core Workflows
+- [Setup Instructions](https://github.com/runchr-com/gstack-antigravity#setup): How to give your AI "Eyes."
+- [3-Step Timeline](https://github.com/runchr-com/gstack-antigravity#timeline): Plan, Build, and Check phases.
+- [Persona List](/gstack-origin/docs/skills.md): Descriptions of all 25 digital specialists.
+
+## Key Commands
+- `/office-hours`: Brainstorming and strategy with a YC-style partner.
+- `/gstack`: Automated building and browser-based coding.
+- `/qa`: Visual bug finding and automated testing.
+
+## Technical Notes
+- Built for Antigravity.
+- Derived from Garry Tan's gstack.
+- Features "Safety Guards" to prevent broken code deployments.
+

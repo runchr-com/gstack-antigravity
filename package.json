@@ -1,0 +1,38 @@
+{
+  "name": "@runchr/gstack-antigravity",
+  "version": "0.1.1",
+  "private": false,
+  "description": "Local installer for gStack-Antigravity (.agents layout)",
+  "keywords": [
+    "antigravity",
+    "gstack",
+    "agent",
+    "workflow",
+    "skills"
+  ],
+  "homepage": "https://github.com/runchr-com/gstack-antigravity#readme",
+  "bugs": {
+    "url": "https://github.com/runchr-com/gstack-antigravity/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/runchr-com/gstack-antigravity.git"
+  },
+  "files": [
+    "bin/",
+    "scripts/",
+    ".agents/workflows/",
+    ".agents/rules/",
+    "gstack-origin/",
+    "README.md",
+    "README_KO.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "gstack-antigravity": "bin/install.js"
+  },
+  "license": "MIT"
+}

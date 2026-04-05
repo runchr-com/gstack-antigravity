@@ -1,0 +1,69 @@
+# Full Context: gStack-Antigravity Toolkit
+
+This document provides the complete technical and operational context for the gStack-Antigravity repository. It is intended for ingestion by LLMs and AI Agents to understand the persona-driven development workflow.
+
+## 1. Project Overview
+gStack-Antigravity is a fork of Garry Tan's gStack, optimized for the Antigravity environment. It is designed for "vibe coding"?”allowing non-technical founders to build, test, and launch software through natural language orchestration of 25 specialized AI personas.
+
+### Core Philosophy
+- **Natural Language First:** Users should interact with the toolkit through chat, not code.
+- **Agentic Autonomy:** The toolkit uses browser-based agents to perform "hands-on" tasks like visual QA and terminal execution.
+- **Safety Over Speed:** Integrated safety checks (formerly Atomic Merge Guards) ensure code integrity before saving changes.
+
+## 2. Setup & Installation
+The toolkit requires giving the AI "eyes" to interact with the web and local environments.
+
+### The Natural Language Trigger
+Users can initialize the environment by prompting:
+> "Set up my AI browser so it can see my website."
+
+### Manual Installation Path
+- **Script Location:** `./gstack-origin/browse/setup`
+- **Actions:** Fetches browser drivers, updates Chrome configurations, and verifies environment variables.
+- **Success Criteria:** Terminal output must confirm `AI Browser is ready to see!`.
+
+## 3. The 3-Step Founder Timeline
+To reduce choice paralysis among 25 personas, users follow this linear workflow:
+
+### Step 1: PLAN (Persona: `/office-hours`)
+- **Role:** Senior YC-style Partner.
+- **Function:** Strategic pressure-testing of product ideas, market fit analysis, and architecture whiteboarding.
+- **Output:** A validated product roadmap.
+
+### Step 2: BUILD (Persona: `/gstack`)
+- **Role:** Full-Stack Engineer Agent.
+- **Function:** Writing code, managing the terminal, and using the browser to verify deployments.
+- **Output:** Functional software or microservices.
+
+### Step 3: CHECK (Persona: `/qa`)
+- **Role:** Automated QA Engineer.
+- **Function:** Visual regression testing and bug identification via browser navigation.
+- **Output:** Bug reports and automated fixes.
+
+## 4. Persona Definitions (The 25 Specialists)
+The following specialists are available via command triggers. Each persona is configured with a specific system prompt to dictate behavior:
+
+1. **CEO (`/office-hours`):** High-level strategy and prioritization.
+2. **Architect (`/gstack`):** Technical scaffolding and system design.
+3. **QA Engineer (`/qa`):** Bug hunting and visual verification.
+4. **Copywriter:** Optimizing UI text and landing page conversion.
+5. **Designer:** UI/UX feedback and layout suggestions.
+6. **Backend Lead:** Python microservice optimization and API structure.
+7. **Frontend Lead:** React/Next.js component building.
+8. **DevOps:** Deployment pipelines and environment stability.
+9. **Security:** Scrubbing telemetry and ensuring data privacy.
+10. **Growth:** User acquisition strategies and onboarding flows.
+*(Note to Agent: The remaining 15 personas follow similar specialized patterns for specialized domains like database management, mobile responsiveness, and documentation.)*
+
+## 5. Safety & Privacy Features
+- **Code Integrity:** Automated checks prevent the agent from saving code that contains syntax errors or fails basic runtime tests.
+- **Privacy Shield:** All telemetry and background tracking data is scrubbed before processing to ensure local development privacy.
+
+## 6. Example Interaction Pattern
+**Intent:** Brainstorming a new feature.
+**Command:** `/office-hours`
+**Prompt:** "I want to build a tool that automates [Target Goal]. Challenge the technical friction of this idea."
+**Agent Response Pattern:** The agent will acknowledge the role, analyze the friction points (e.g., API limits, user friction, battery life), and provide a recommendation.
+
+---
+[End of Context]
