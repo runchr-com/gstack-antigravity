@@ -35,7 +35,7 @@ function printHelp() {
       "",
       "Notes:",
       "  - For npx/git installs, use --mode copy (recommended).",
-      "  - This installer writes to .agents/skills/gstack in target project."
+      "  - This installer writes .agents/skills/gstack, .agents/workflows, .agents/rules."
     ].join("\n")
   );
 }
@@ -74,25 +74,34 @@ function main() {
   }
 
   const targetRoot = path.resolve(args.target || process.cwd());
+  const targetAgentsRoot = path.join(targetRoot, ".agents");
   const targetSkillsRoot = path.join(targetRoot, ".agents", "skills");
   const targetSkill = path.join(targetSkillsRoot, "gstack");
+  const targetWorkflows = path.join(targetAgentsRoot, "workflows");
+  const targetRules = path.join(targetAgentsRoot, "rules");
 
   ensureDir(targetSkillsRoot);
   rmIfExists(targetSkill);
+  rmIfExists(targetWorkflows);
+  rmIfExists(targetRules);
 
   if (mode === "link") {
     // In npx temp execution contexts symlinks can be fragile. Keep explicit warning.
     console.warn("WARN: --mode link may break in npx temporary contexts. Prefer copy.");
     fs.symlinkSync(srcSkills, targetSkill, "junction");
+    fs.symlinkSync(srcWorkflows, targetWorkflows, "junction");
+    fs.symlinkSync(srcRules, targetRules, "junction");
   } else {
     fs.cpSync(srcSkills, targetSkill, { recursive: true });
+    fs.cpSync(srcWorkflows, targetWorkflows, { recursive: true });
+    fs.cpSync(srcRules, targetRules, { recursive: true });
   }
 
   console.log("Installed gstack for Antigravity (workspace local only)");
   console.log(`  target    : ${targetRoot}`);
   console.log(`  skills    : ${targetSkill}`);
-  console.log(`  workflows : ${srcWorkflows}`);
-  console.log(`  rules     : ${srcRules}`);
+  console.log(`  workflows : ${targetWorkflows}`);
+  console.log(`  rules     : ${targetRules}`);
   console.log(`  mode      : ${mode}`);
 }
 
@@ -102,4 +111,3 @@ try {
   console.error(`ERROR: ${err.message}`);
   process.exit(1);
 }
-
