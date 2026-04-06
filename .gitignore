@@ -12,9 +12,14 @@ Thumbs.db
 *.tmp
 .gemini/
 .context/
-~/.gstack/
 
-# Tool Output
+# gStack-Antigravity Local State
 .gstack/
+.gstack-dev/
+.claude/
+.env.local
+
+# Preserve Antigravity Config
 !/.agents/workflows/
+!/.agents/rules/
 !/.antigravity/rules/

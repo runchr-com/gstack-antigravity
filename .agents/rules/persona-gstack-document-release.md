@@ -1,10 +1,10 @@
-# [ROLE: gStack Document Release Router]
+# [ROLE: gStack-Antigravity Document Release Router]
 
 Use [global-gstack.md](/.agents/rules/global-gstack.md) as baseline behavior.
 
 ## Source of Truth
-For exact procedure and all detailed steps, read and follow verbatim:
-- /gstack-origin/document-release/SKILL.md
+For exact procedure and all detailed steps, read and follow:
+- /gstack-origin/document-release/SKILL.md (Note: Focus on procedural steps; skip redundant Preamble/Ethics sections already in global-gstack.md).
 
 ## Execution Rule
 - Do not summarize or substitute the procedure when running this skill.

@@ -1,3 +1,4 @@
+// turbo-all
 ---
 description: Safety guardrails for destructive commands.
 ---

@@ -1,194 +1,137 @@
-﻿# gStack-Antigravity
+# gStack-Antigravity 🚀
 
 [한국어 README](./README_KO.md)
 
-gStack-Antigravity is a practical, team-friendly Antigravity port of [garrytan/gstack](https://github.com/garrytan/gstack).
-It keeps upstream skill procedures in `gstack-origin/`, while using `.agents/workflows` and `.agents/rules` so your team can run repeatable, agent-driven workflows inside one project.
+**gStack-Antigravity** is a high-performance, team-ready port of [garrytan/gstack](https://github.com/garrytan/gstack) built natively for the **Antigravity** agent environment.
 
-## Why This Repo
-Most teams can run one-off prompts. Fewer teams can run consistent, high-quality AI workflows repeatedly.
-This repo focuses on that second problem:
-- keep upstream gstack behavior accessible (`gstack-origin`)
-- keep project-level control in `.agents/*`
-- keep onboarding simple for teammates
+It brings the original gStack's elite developer workflows and browser automation to Antigravity with a **Thin Router** architecture that prioritizes token efficiency and cross-platform reliability.
 
-## How It Works
-Runtime layers:
-- `gstack-origin/`: upstream source-of-truth skill docs (`SKILL.md`)
-- `.agents/workflows/`: command entrypoints and execution phases
-- `.agents/rules/`: policy, role routing, shared constraints
-- `.agents/skills/gstack/`: locally installed skill payload used by Antigravity
+---
 
-Design intent:
-- **Context efficiency**: rules are thin routers, load full detail from `gstack-origin` when needed
-- **Behavior parity**: operational procedures still come from upstream skill docs
-- **Team consistency**: everyone executes the same workflows/rules in the repo
+## 🏗 Why this Port? (Core Philosophy)
 
-## Prerequisites
-- Antigravity installed
-- Git installed
-- Access to this repository
+Developing AI workflows often hits two bottlenecks: **Token Exhaustion** and **Execution Drift**. 
 
-Optional but recommended:
-- A clean git working tree before sync/update operations
-- A browser environment that can run `gstack-origin/browse/setup`
+gStack-Antigravity solves these using:
+- **Thin Router Architecture**: Instead of loading 30,000+ tokens of logic every session, we use lightweight rules (`.agents/rules/`) that act as routers. They pull the exact "Source of Truth" from `gstack-origin/` only when a specific command is invoked.
+- **Native Browser Integration**: We use Antigravity's native `browser_subagent` and `read_browser_page` tools as a first-class bridge, ensuring faster, more visual feedback.
+- **Cross-Platform Parity**: Specialized support for macOS, Linux, and Windows (PowerShell).
 
-## Quick Start (3 minutes)
-1. Clone:
+---
+
+## 🚀 Getting Started
+
+### 1. End Users (Recommended)
+The fastest way to add gStack powers to your project:
+```bash
+# MUST be run in your project's root directory:
+npx @runchr/gstack-antigravity
+```
+Then, open Antigravity in your project and **enter `/gstack-setup` in the chat window**:
+```bash
+/gstack-setup
+```
+
+### 2. Contributors & Developers
+If you want to modify gStack-Antigravity or sync with upstream:
 ```bash
 git clone https://github.com/runchr-com/gstack-antigravity.git
 cd gstack-antigravity
-```
-2. Build browse binary (first time):
-```bash
-cd gstack-origin/browse
-./setup
-cd ../..
-```
-3. Install local skills (recommended):
-```bash
-npx @runchr/gstack-antigravity
+/gstack-setup
 ```
 
-Alternative: run directly from this GitHub repo
-```bash
-npx github:runchr-com/gstack-antigravity
+> [!NOTE]
+> The `/gstack-setup` command is essential because it builds platform-specific browser binaries (which cannot be pre-bundled in npm).
+
+---
+
+## 🛠 Workflow Command Reference (`/commands`)
+
+Antigravity workflows allow you to run complex, multi-step agent behaviors with a single command.
+
+| Command | Category | Description |
+|:--- |:--- |:--- |
+| `/office-hours` | **Strategy** | Brainstorming session for new ideas. Focuses on product-market fit and user pain. |
+| `/plan-ceo-review` | **Strategy** | Strategic challenge of your current plan. Asks the "hard questions" about scope and value. |
+| `/plan-eng-review` | **Architecture** | Rigorous technical audit of your implementation plan. Checks for race conditions, auth, and edge cases. |
+| `/autoplan` | **Strategy** | Runs CEO, Design, and Eng reviews sequentially in one session. |
+| `/investigate` | **Debugging** | Systematic root-cause debugging. **Iron Law: No fixes without root cause.** |
+| `/qa` | **Testing** | Automated browser-driven QA. Discovers targets, finds bugs, and offers auto-fixes. |
+| `/review` | **Audit** | Pre-landing PR review. Pass 1 (Critical issues), Pass 2 (Code quality). |
+| `/ship` | **Release** | The ultimate ship engine: Merge -> Test -> Eval -> Version -> Changelog -> Push -> PR. |
+| `/codex` | **Review** | Request a "Second Opinion" from an adversarial model to find hidden exploits. |
+
+---
+
+## 📖 Example Scenario: Building a "Memo App" from A to Z
+
+How do you actually use these commands? Let's walk through building a simple Memo App.
+
+```mermaid
+graph TD
+    A[Idea: Memo App] --> B(Concept: /office-hours)
+    B --> C(Audit: /plan-eng-review)
+    C --> D{Implementation}
+    D --> E(Bug Hunt: /qa)
+    E --> F(PR Review: /review)
+    F --> G(Final Release: /ship)
 ```
 
-Manual script install (for contributors):
-```bash
-./scripts/install-antigravity-skill.sh copy
-# Windows PowerShell:
-./scripts/install-antigravity-skill.ps1 -Mode copy
-```
-4. Open Antigravity in this project and run `/office-hours`.
+### 1. Dreaming & Strategy (`/office-hours`)
+- **User**: "I want to build a memo app with voice recognition and tagging."
+- **Antigravity**: Runs a brainstorming session to clarify the MVP features and user pain points.
+- **Outcome**: A solid product spec and prioritized task list.
 
-## Detailed Setup
-### Step 1) Verify expected local paths
-After install, confirm these exist:
-- `.agents/skills/gstack`
-- `.agents/workflows`
-- `.agents/rules`
+### 2. Architecture Audit (`/plan-eng-review`)
+- **User**: "Here is my plan for the database schema and sync logic."
+- **Antigravity**: Reviews the plan for race conditions, auth gaps, and edge cases.
+- **Outcome**: A "hardened" implementation plan that is ready for coding.
 
-PowerShell check:
-```powershell
-Test-Path .agents/skills/gstack
-Test-Path .agents/workflows
-Test-Path .agents/rules
-```
+### 3. Automated Quality Guard (`/qa`)
+- **User**: "Make sure the 'Delete Note' button works on both mobile and desktop."
+- **Antigravity**: Spawns a headless browser, navigates to your local dev server, finds the button, and verifies the deletion in the database.
+- **Outcome**: Discovers a UI bug on mobile and provides an automatic fix.
 
-### Step 2) Choose install mode
-Install scripts support two modes:
-- `copy` (default): duplicates files into `.agents/skills/gstack`
-- `link`: symlink mode for faster iteration while editing this repo
+### 4. Zero-Friction Release (`/ship`)
+- **User**: "I'm ready to push this to production."
+- **Antigravity**: Checks tests, updates the version, generates a changelog, creates a PR, and merges it once approved.
+- **Outcome**: Your feature is live, documented, and versioned—without a single manual git command.
 
-Examples:
-```bash
-./scripts/install-antigravity-skill.sh copy
-./scripts/install-antigravity-skill.sh link
-```
-```powershell
-./scripts/install-antigravity-skill.ps1 -Mode copy
-./scripts/install-antigravity-skill.ps1 -Mode link
-```
+---
 
-Use `copy` for teammate stability. Use `link` when actively developing this repo.
+## 🌐 Browser Automation ($B)
 
-## First Workflow Test (Recommended)
-Run this exact sequence for a smoke test:
-1. `/office-hours`
-2. Describe one product problem in 2-3 sentences
-3. Confirm the assistant asks structured discovery questions
-4. `/plan-ceo-review`
-5. `/review`
+For manual control or technical integration, use the `$B` (browse) command set. These tools use a persistent headless Chromium instance.
 
-Pass criteria:
-- Commands resolve without missing-skill errors
-- Workflow phase structure appears (not free-form random output)
-- Rules are applied consistently across commands
+### Common Patterns
+- **Orientation**: `$B goto [URL]` -> `$B snapshot -i` (Highlights all interactive elements).
+- **Interaction**: `$B click @e1`, `$B fill @e2 "value"`.
+- **Assertion**: `$B is visible ".dashboard"`, `$B console` (Check JS errors).
+- **Evidence**: `$B screenshot`, `$B snapshot -a -o [path]` (Annotated capture).
 
-## Daily Usage Guide
-### A. Discovery / Strategy
-- `/office-hours`: sharpen problem and user pain
-- `/plan-ceo-review`: strategic challenge and scope pressure-test
-- `/plan-eng-review`: architecture and implementation rigor
+### Command List
+- `goto <url>`: Navigate to target.
+- `snapshot -i`: Interactive accessibility tree with `@e` refs.
+- `snapshot -D`: Unified diff against previous page state.
+- `responsive`: Capture mobile, tablet, and desktop views at once.
+- `cookie-import-browser`: Import real login sessions from your Chrome/Arc/Edge.
+- `handoff`: Open visible Chrome for user takeover (CAPTCHA, etc.).
 
-### B. Build / Verify
-- implement your code changes
-- `/review`: pre-merge code quality and risk checks
-- `/qa`: browser-driven QA and bug finding
+---
 
-### C. Release / Post-Release
-- `/ship`: release preparation
-- `/document-release`: docs sync
-- `/retro`: process and outcome reflection
+## 🛡 Security & Safety
 
-## Recommended Team Operating Pattern
-For each feature branch:
-1. Plan with `/office-hours` + `/plan-*`
-2. Implement
-3. Run `/review`
-4. Run `/qa`
-5. Ship
+- **Local Only**: All session state, screenshots, and logs are kept in `.gstack/` (ignored by git).
+- **`/careful`**: Activates guardrails for destructive commands (rm -rf, DROP TABLE, force push).
+- **`/guard`**: Maximum safety mode (read-only restrictions for specific modules).
 
-For weekly cadence:
-1. `/retro` to identify recurring gaps
-2. tune workflow/rules in `.agents/`
-3. commit improvements with clear changelog notes
+---
 
-## Upstream Sync (`gstack-origin`)
-Use this when you want latest upstream skill procedures.
-
-- macOS/Linux:
+## 🔄 Upstream Sync
+To sync with the original `garrytan/gstack` source:
 ```bash
 ./scripts/sync-gstack-origin.sh
 ```
-- Windows PowerShell:
-```powershell
-./scripts/sync-gstack-origin.ps1
-```
 
-Manual fallback:
-```bash
-git fetch gstack-upstream
-git subtree pull --prefix gstack-origin gstack-upstream main --squash
-```
-
-After sync:
-1. re-run local install script
-2. run smoke test (`/office-hours`, `/review`)
-3. commit updated subtree + any adapter changes in `.agents/*`
-
-## Troubleshooting
-### Skills not detected
-1. confirm `.agents/skills/gstack` exists
-2. re-run install script in `copy` mode
-3. restart Antigravity session/app
-
-### Browse-related failures
-1. run:
-```bash
-cd gstack-origin/browse
-./setup
-```
-2. reinstall local skills
-3. retry `/qa` or browse-dependent workflow
-
-### Unexpected behavior drift
-1. check `gstack-origin` revision changed recently
-2. inspect `.agents/rules` router mapping
-3. run `/review` smoke test on a small diff to validate baseline
-
-## FAQ
-### Do I need `llms.txt` and `llms-full.txt`?
-No. They are optional helper context docs.
-
-### Why keep `gstack-origin` if we have `.agents/rules`?
-`.agents/rules` is lightweight orchestration. `gstack-origin` holds detailed upstream procedures.
-
-### Should we commit `.agents/skills/gstack`?
-For this repository’s workflow, yes. It improves reproducibility for teammates.
-
-## Notes
-- This repo is optimized for **local workspace usage**.
-- Runtime behavior is driven by `.agents/workflows`, `.agents/rules`, and installed skills in `.agents/skills/gstack`.
+## 📄 License
+MIT License. Created by [garrytan](https://github.com/garrytan), ported to Antigravity by [runchr](https://github.com/runchr-com).

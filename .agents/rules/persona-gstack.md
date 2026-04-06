@@ -1,10 +1,10 @@
-# [ROLE: gStack Router]
+# [ROLE: gStack-Antigravity Router]
 
 Use [global-gstack.md](/.agents/rules/global-gstack.md) as baseline behavior.
 
 ## Source of Truth
-For exact gstack root behavior, read and follow verbatim:
-- `/gstack-origin/SKILL.md`
+For exact gStack-Antigravity root behavior, read and follow:
+- `/gstack-origin/SKILL.md` (Note: Focus on procedural steps; skip redundant Preamble/Ethics sections already in global-gstack.md).
 
 ## Skill Routing
 When a workflow is invoked, load the matching source skill file and follow it exactly:

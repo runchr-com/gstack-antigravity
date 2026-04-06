@@ -1,14 +1,39 @@
-# global-gstack.md
+## Antigravity Branding (De-Claude-ify)
 
-This rule defines the core principles and decision-making framework for all gStack-Antigravity operations.
+gStack-Antigravity is an independent port. Follow these translation rules for all skill procedures:
+
+- **Path Redirection**: Whenever a skill mentions a path like `~/.claude/skills/gstack/`, substitute it with the project-local `.agents/skills/gstack/` or a workspace-aware `.gstack/` directory.
+- **Context Source**: When a skill refers to `CLAUDE.md` as the "Source of Truth" for project context (test commands, deploy settings), use `README.md` or `AGENT.md` instead. If neither exists, project context must be derived via discovery (Grep/Glob).
+- **Tool Names**: Refer to the assistant as **Antigravity** and the toolset as **gStack-Antigravity**.
+
+## Browser Tooling Bridge
+
+The original gstack uses a custom `$B` binary. For better reliability and visual integration within Antigravity:
+
+- **Native Preference**: Prefer using your native `browser_subagent` and `read_browser_page` tools instead of running the `$B` binary directly.
+- **Translation**: If a skill instruction says `$B goto [URL]`, use `browser_subagent` to navigate. If it says `$B screenshot`, use `browser_subagent` to capture the page.
+- **Visual Sketch**: During "Visual Sketch" phases, use `browser_subagent` to render the HTML wireframe and capture the result for the user.
+
+## Cross-Platform Path Normalization
+
+To ensure compatibility across macOS, Linux, and Windows:
+
+- **Home Directory**: Use the appropriate environment variable for the home directory (`$HOME` on Unix/Mac, `$USERPROFILE` on Windows).
+- **Temporary Files**: Store session-specific temporary files (like screenshots or draft designs) in the project-local `./.gstack/` directory (ensure it is created if it doesn't exist).
+- **Shell Commands**: When suggested bash commands are intended for Windows, translate them to equivalent PowerShell commands (e.g., `mkdir -p` -> `New-Item -ItemType Directory -Force`).
+
+## Update Handling
+
+- **Ignore Upstream Prompts**: If a skill preamble outputs `UPGRADE_AVAILABLE`, ignore it. Do NOT attempt to run the original `gstack-upgrade` skill, as it may overwrite your local Antigravity-specific configuration. 
+- **Port Updates**: Updates to this port should be handled via `git pull` (for clones) or `npx @runchr/gstack-antigravity@latest` (for npx installs).
 
 ## AskUserQuestion Format
 
 **ALWAYS follow this structure for every AskUserQuestion call:**
-1. **Re-ground:** State the project, the current branch (use the `_BRANCH` value printed by the preamble ??NOT any branch from conversation history or gitStatus), and the current plan/task. (1-2 sentences)
+1. **Re-ground:** State the project, the current branch (use the `_BRANCH` value printed by the preamble — NOT any branch from conversation history or gitStatus), and the current plan/task. (1-2 sentences)
 2. **Simplify:** Explain the problem in plain English a smart 16-year-old could follow. No raw function names, no internal jargon, no implementation details. Use concrete examples and analogies. Say what it DOES, not what it's called.
-3. **Recommend:** `RECOMMENDATION: Choose [X] because [one-line reason]` ??always prefer the complete option over shortcuts (see Completeness Principle). Include `Completeness: X/10` for each option. Calibration: 10 = complete implementation (all edge cases, full coverage), 7 = covers happy path but skips some edges, 3 = shortcut that defers significant work. If both options are 8+, pick the higher; if one is ??, flag it.
-4. **Options:** Lettered options: `A) ... B) ... C) ...` ??when an option involves effort, show both scales: `(human: ~X / CC: ~Y)`
+3. **Recommend:** `RECOMMENDATION: Choose [X] because [one-line reason]` — always prefer the complete option over shortcuts (see Completeness Principle). Include `Completeness: X/10` for each option. Calibration: 10 = complete implementation (all edge cases, full coverage), 7 = covers happy path but skips some edges, 3 = shortcut that defers significant work. If both options are 8+, pick the higher; if one is 5 or less, flag it.
+4. **Options:** Lettered options: `A) ... B) ... C) ...` — when an option involves effort, show both scales: `(human: ~X / AG: ~Y)`
 
 Assume the user hasn't looked at this window in 20 minutes and doesn't have the code open. If you'd need to read the source to understand your own explanation, it's too complex.
 

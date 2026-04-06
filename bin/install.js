@@ -97,12 +97,17 @@ function main() {
     fs.cpSync(srcRules, targetRules, { recursive: true });
   }
 
-  console.log("Installed gstack for Antigravity (workspace local only)");
-  console.log(`  target    : ${targetRoot}`);
-  console.log(`  skills    : ${targetSkill}`);
-  console.log(`  workflows : ${targetWorkflows}`);
-  console.log(`  rules     : ${targetRules}`);
-  console.log(`  mode      : ${mode}`);
+  console.log("\n✅ gStack-Antigravity installed successfully!");
+  console.log("----------------------------------------------");
+  console.log(`  Target Directory: ${targetRoot}`);
+  console.log(`  Install Mode    : ${mode}`);
+  console.log("\n🚀 Next Step:");
+  console.log("  1. In the SAME project root directory, open Antigravity.");
+  console.log("  2. Enter the following command in the Antigravity chat window:");
+  console.log("\n     /gstack-setup");
+  console.log("\n  This will complete the environment setup, including");
+  console.log("  building the browser binaries for your platform.");
+  console.log("----------------------------------------------\n");
 }
 
 try {
