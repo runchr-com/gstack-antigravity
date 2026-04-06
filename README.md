@@ -127,6 +127,31 @@ For manual control or technical integration, use the `$B` (browse) command set. 
 
 ---
 
+## 🛠 Troubleshooting & Corporate Networks
+
+If you are using gStack-Antigravity in a restricted corporate environment (Firewall/Proxy), you may encounter `ECONNRESET` errors during browser downloads.
+
+### 1. Corporate Proxy
+If your network requires a proxy, set the `HTTPS_PROXY` environment variable before running setup:
+```bash
+HTTPS_PROXY=http://your-proxy-server:8080 /gstack-setup
+```
+
+### 2. Skipping Browser Download (Token Efficiency)
+To save tokens and avoid repeated download failures, you can run the setup without the browser installation:
+```bash
+/gstack-setup --skip-browser
+```
+This will build the core `browse` binary and register skills, but skip the Playwright Chromium download.
+
+### 3. Manual Browser Installation
+If the automated download fails, run this command manually in a standard terminal:
+```bash
+npx playwright install chromium
+```
+
+---
+
 ## 🔄 Upstream Sync
 To sync with the original `garrytan/gstack` source:
 ```bash

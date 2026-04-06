@@ -127,6 +127,31 @@ graph TD
 
 ---
 
+## 🛠 기업망 및 네트워크 트러블슈팅
+
+방화벽이나 프록시가 설정된 기업 내부 네트워크 환경에서는 브라우저 다운로드 중 `ECONNRESET` 에러가 발생할 수 있습니다.
+
+### 1. 기업 프록시 설정
+네트워크에서 프록시 서버를 사용하는 경우, 다음과 같이 `HTTPS_PROXY` 환경 변수를 프록시 서버 주소로 설정한 후 실행하세요:
+```bash
+HTTPS_PROXY=http://your-proxy-server:8080 /gstack-setup
+```
+
+### 2. 브라우저 다운로드 건너뛰기 (토큰 절약)
+네트워크 문제로 설치가 반복 실패하여 토큰이 낭비되는 것을 방지하기 위해, 브라우저 다운로드를 제외한 핵심 설정만 먼저 완료할 수 있습니다:
+```bash
+/gstack-setup --skip-browser
+```
+이 옵션은 `browse` 바이너리 빌드와 스킬 등록은 수행하지만, Playwright Chromium 다운로드는 건너뜁니다.
+
+### 3. 수동 브라우저 설치
+자동 다운로드가 실패한 경우, 별도의 터미널(Antigravity 밖)에서 다음 명령어를 실행하여 수동으로 설치하세요:
+```bash
+npx playwright install chromium
+```
+
+---
+
 ## 🔄 업스트림 동기화 (Sync)
 원본 `garrytan/gstack` 소스와 동기화하려면 다음을 실행하세요:
 ```bash

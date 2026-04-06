@@ -26,7 +26,8 @@ This workflow ensures the workspace is ready for gStack-Antigravity operations a
    - Windows: `.agents/skills/gstack/browse/dist/browse.exe`
 2. If binary is missing:
    - Tell the user: "gstack browse needs a one-time build (~10 seconds)."
-   - Run: `cd .agents/skills/gstack/browse && ./setup` (or `powershell ./setup.ps1` if available).
+   - Run: `cd .agents/skills/gstack/browse && ./setup`
+   - **Tip**: If in a corporate network with download restrictions, the user can run `/gstack-setup --skip-browser` to skip Playwright Chromium installation and install it manually later via `npx playwright install chromium`.
 
 // turbo
 ## Phase 4: Project Context (Branding)

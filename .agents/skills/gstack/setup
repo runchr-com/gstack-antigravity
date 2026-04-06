@@ -17,12 +17,14 @@ case "$(uname -s)" in
   MINGW*|MSYS*|CYGWIN*|Windows_NT) IS_WINDOWS=1 ;;
 esac
 
-# ─── Parse --host flag ─────────────────────────────────────────
+# ─── Parse flags ─────────────────────────────────────────
 HOST="claude"
+SKIP_BROWSER=0
 while [ $# -gt 0 ]; do
   case "$1" in
     --host) HOST="$2"; shift 2 ;;
     --host=*) HOST="${1#--host=}"; shift ;;
+    --skip-browser) SKIP_BROWSER=1; shift ;;
     *) shift ;;
   esac
 done
@@ -95,7 +97,9 @@ if [ ! -x "$BROWSE_BIN" ]; then
 fi
 
 # 2. Ensure Playwright's Chromium is available
-if ! ensure_playwright_browser; then
+if [ "$SKIP_BROWSER" -eq 1 ]; then
+  echo "Skipping Playwright Chromium installation (--skip-browser)..."
+elif ! ensure_playwright_browser; then
   echo "Installing Playwright Chromium..."
   (
     cd "$GSTACK_DIR"
@@ -119,7 +123,7 @@ if ! ensure_playwright_browser; then
   fi
 fi
 
-if ! ensure_playwright_browser; then
+if [ "$SKIP_BROWSER" -eq 0 ] && ! ensure_playwright_browser; then
   if [ "$IS_WINDOWS" -eq 1 ]; then
     echo "gstack setup failed: Playwright Chromium could not be launched via Node.js" >&2
     echo "  This is a known issue with Bun on Windows (oven-sh/bun#4253)." >&2
