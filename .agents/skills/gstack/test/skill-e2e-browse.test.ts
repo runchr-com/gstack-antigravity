@@ -131,7 +131,7 @@ Report the exact output. Do NOT try to fix or install anything — just report w
 
     // Setup block should either find the global binary (READY) or show NEEDS_SETUP.
     // On dev machines with gstack installed globally, the fallback path
-    // ~/.claude/skills/gstack/browse/dist/browse exists, so we get READY.
+    // ./.agents/skills/gstack/browse/dist/browse exists, so we get READY.
     // The important thing is it doesn't crash or give a confusing error.
     const allText = result.output || '';
     recordE2E(evalCollector, 'SKILL.md setup block (no local binary)', 'Skill E2E tests', result);

@@ -21,7 +21,7 @@ Load identity: [persona-gstack-qa-only.md](/.agents/rules/persona-gstack-qa-only
 ## Phase 4: Final Wrap-up
 1. Generate the Top 3 Things to Fix.
 2. Save the `baseline.json` for future regression testing.
-3. Write the Structured Report to `.gstack/qa-reports/` and `~/.gstack/projects/`.
+3. Write the Structured Report to `.gstack/qa-reports/` and `./.gstack/projects/`.
 4. **Note:** Never fix bugs in this workflow.
 
 

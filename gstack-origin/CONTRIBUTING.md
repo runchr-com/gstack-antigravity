@@ -4,7 +4,7 @@ Thanks for wanting to make gstack better. Whether you're fixing a typo in a skil
 
 ## Quick start
 
-gstack skills are Markdown files that Claude Code discovers from a `skills/` directory. Normally they live at `~/.claude/skills/gstack/` (your global install). But when you're developing gstack itself, you want Claude Code to use the skills *in your working tree* — so edits take effect instantly without copying or deploying anything.
+gstack skills are Markdown files that Claude Code discovers from a `skills/` directory. Normally they live at `./.agents/skills/gstack/` (your global install). But when you're developing gstack itself, you want Claude Code to use the skills *in your working tree* — so edits take effect instantly without copying or deploying anything.
 
 That's what dev mode does. It symlinks your repo into the local `.claude/skills/` directory so Claude Code reads skills straight from your checkout.
 
@@ -25,11 +25,11 @@ bin/dev-teardown               # deactivate — back to your global install
 Contributor mode turns gstack into a self-improving tool. Enable it and Claude Code
 will periodically reflect on its gstack experience — rating it 0-10 at the end of
 each major workflow step. When something isn't a 10, it thinks about why and files
-a report to `~/.gstack/contributor-logs/` with what happened, repro steps, and what
+a report to `./.gstack/contributor-logs/` with what happened, repro steps, and what
 would make it better.
 
 ```bash
-~/.claude/skills/gstack/bin/gstack-config set gstack_contributor true
+./.agents/skills/gstack/bin/gstack-config set gstack_contributor true
 ```
 
 The logs are for **you**. When something bugs you enough to fix, the report is
@@ -39,7 +39,7 @@ the issue, fix it, and open a PR.
 ### The contributor workflow
 
 1. **Use gstack normally** — contributor mode reflects and logs issues automatically
-2. **Check your logs:** `ls ~/.gstack/contributor-logs/`
+2. **Check your logs:** `ls ./.gstack/contributor-logs/`
 3. **Fork and clone gstack** (if you haven't already)
 4. **Symlink your fork into the project where you hit the bug:**
    ```bash
@@ -157,7 +157,7 @@ EVALS=1 bun test test/skill-e2e-*.test.ts
 
 ### E2E observability
 
-When E2E tests run, they produce machine-readable artifacts in `~/.gstack-dev/`:
+When E2E tests run, they produce machine-readable artifacts in `./.gstack-dev/`:
 
 | Artifact | Path | Purpose |
 |----------|------|---------|
@@ -179,7 +179,7 @@ bun run eval:summary         # aggregate stats + per-test efficiency averages ac
 
 **Eval comparison commentary:** `eval:compare` generates natural-language Takeaway sections interpreting what changed between runs — flagging regressions, noting improvements, calling out efficiency gains (fewer turns, faster, cheaper), and producing an overall summary. This is driven by `generateCommentary()` in `eval-store.ts`.
 
-Artifacts are never cleaned up — they accumulate in `~/.gstack-dev/` for post-mortem debugging and trend analysis.
+Artifacts are never cleaned up — they accumulate in `./.gstack-dev/` for post-mortem debugging and trend analysis.
 
 ### Tier 3: LLM-as-judge (~$0.15/run)
 
@@ -327,7 +327,7 @@ it up immediately.
 rm .claude/skills/gstack
 ```
 
-Claude Code falls back to `~/.claude/skills/gstack/` automatically.
+Claude Code falls back to `./.agents/skills/gstack/` automatically.
 
 ### Alternative: point your global install at a branch
 

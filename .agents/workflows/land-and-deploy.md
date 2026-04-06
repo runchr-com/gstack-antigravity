@@ -29,7 +29,7 @@ Load identity: [persona-gstack-land-and-deploy.md](/.agents/rules/persona-gstack
 
 ## Phase 5: Reporting
 1. Generate the Deploy Report and save evidence to `.gstack/deploy-reports/`.
-2. Write the test outcome artifact to `~/.gstack/projects/`.
+2. Write the test outcome artifact to `./.gstack/projects/`.
 
 
 

@@ -2,7 +2,7 @@
  * Eval result persistence and comparison.
  *
  * EvalCollector accumulates test results, writes them to
- * ~/.gstack-dev/evals/{version}-{branch}-{tier}-{timestamp}.json,
+ * ./.gstack-dev/evals/{version}-{branch}-{tier}-{timestamp}.json,
  * prints a summary table, and auto-compares with the previous run.
  *
  * Comparison functions are exported for reuse by the eval:compare CLI.

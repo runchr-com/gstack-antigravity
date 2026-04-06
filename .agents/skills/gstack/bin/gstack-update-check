@@ -9,7 +9,7 @@
 # Env overrides (for testing):
 #   GSTACK_DIR          — override auto-detected gstack root
 #   GSTACK_REMOTE_URL   — override remote VERSION URL
-#   GSTACK_STATE_DIR    — override ~/.gstack state directory
+#   GSTACK_STATE_DIR    — override ./.gstack state directory
 set -euo pipefail
 
 GSTACK_DIR="${GSTACK_DIR:-$(cd "$(dirname "$0")/.." && pwd)}"

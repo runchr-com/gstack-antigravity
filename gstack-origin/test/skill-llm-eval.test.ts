@@ -424,7 +424,7 @@ describeIfSelected('Cross-skill consistency evals', ['cross-skill greptile consi
     const result = await callJudge<{ consistent: boolean; issues: string[]; score: number; reasoning: string }>(`You are evaluating whether multiple skill configuration files implement the same data architecture consistently.
 
 INTENDED ARCHITECTURE:
-- greptile-history has TWO paths: per-project (~/.gstack/projects/{slug}/greptile-history.md) and global (~/.gstack/greptile-history.md)
+- greptile-history has TWO paths: per-project (./.gstack/projects/{slug}/greptile-history.md) and global (./.gstack/greptile-history.md)
 - /review and /ship WRITE to BOTH paths (per-project for suppressions, global for retro aggregation)
 - /review and /ship delegate write mechanics to greptile-triage.md
 - /retro READS from the GLOBAL path only (it aggregates across all projects)

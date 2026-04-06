@@ -11,7 +11,7 @@
 #     --used-browse true --session-id "12345-1710756600"
 #
 # Env overrides (for testing):
-#   GSTACK_STATE_DIR  — override ~/.gstack state directory
+#   GSTACK_STATE_DIR  — override ./.gstack state directory
 #   GSTACK_DIR        — override auto-detected gstack root
 #
 # NOTE: Uses set -uo pipefail (no -e) — telemetry must never exit non-zero

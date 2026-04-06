@@ -8,7 +8,7 @@
 #   gstack-analytics all      # all time
 #
 # Env overrides (for testing):
-#   GSTACK_STATE_DIR  — override ~/.gstack state directory
+#   GSTACK_STATE_DIR  — override ./.gstack state directory
 set -uo pipefail
 
 STATE_DIR="${GSTACK_STATE_DIR:-$HOME/.gstack}"

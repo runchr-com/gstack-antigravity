@@ -57,7 +57,7 @@ function testIfSelected(testName: string, fn: () => Promise<void>, timeout: numb
   (shouldRun ? test : test.skip)(testName, fn, timeout);
 }
 
-// Eval result collector — accumulates test results, writes to ~/.gstack-dev/evals/ on finalize
+// Eval result collector — accumulates test results, writes to ./.gstack-dev/evals/ on finalize
 const evalCollector = evalsEnabled ? new EvalCollector('e2e') : null;
 
 // Unique run ID for this E2E session — used for heartbeat + per-run log directory
@@ -283,7 +283,7 @@ Report the exact output. Do NOT try to fix or install anything — just report w
 
     // Setup block should either find the global binary (READY) or show NEEDS_SETUP.
     // On dev machines with gstack installed globally, the fallback path
-    // ~/.claude/skills/gstack/browse/dist/browse exists, so we get READY.
+    // ./.agents/skills/gstack/browse/dist/browse exists, so we get READY.
     // The important thing is it doesn't crash or give a confusing error.
     const allText = result.output || '';
     recordE2E('SKILL.md setup block (no local binary)', 'Skill E2E tests', result);
@@ -341,7 +341,7 @@ Report the exact output — either "READY: <path>" or "NEEDS_SETUP".`,
 
 ${contribBlock}
 
-OVERRIDE: Write contributor logs to ${logsDir}/ instead of ~/.gstack/contributor-logs/
+OVERRIDE: Write contributor logs to ${logsDir}/ instead of ./.gstack/contributor-logs/
 
 Now try this browse command (it will fail — there is no binary at this path):
 /nonexistent/path/browse goto https://example.com
@@ -1528,7 +1528,7 @@ export function main() { return Dashboard(); }
     } catch {}
   });
 
-  test('/plan-eng-review writes test-plan artifact to ~/.gstack/projects/', async () => {
+  test('/plan-eng-review writes test-plan artifact to ./.gstack/projects/', async () => {
     // Count existing test-plan files before
     const beforeFiles = fs.readdirSync(projectDir).filter(f => f.includes('test-plan'));
 

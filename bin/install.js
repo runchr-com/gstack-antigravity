@@ -97,6 +97,22 @@ function main() {
     fs.cpSync(srcRules, targetRules, { recursive: true });
   }
 
+  // Ensure .gstack/ is in the project's .gitignore
+  const gitignorePath = path.join(targetRoot, ".gitignore");
+  try {
+    let content = "";
+    if (fs.existsSync(gitignorePath)) {
+      content = fs.readFileSync(gitignorePath, "utf-8");
+    }
+    if (!content.match(/^\.gstack\/?$/m)) {
+      const separator = content === "" || content.endsWith("\n") ? "" : "\n";
+      fs.appendFileSync(gitignorePath, `${separator}.gstack/\n`);
+      console.log(`  Updated ${gitignorePath} to ignore .gstack/`);
+    }
+  } catch (err) {
+    console.warn(`  Warning: Could not update ${gitignorePath}: ${err.message}`);
+  }
+
   console.log("\n✅ gStack-Antigravity installed successfully!");
   console.log("----------------------------------------------");
   console.log(`  Target Directory: ${targetRoot}`);

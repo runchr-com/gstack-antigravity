@@ -2,7 +2,7 @@
 
 gStack-Antigravity is an independent port. Follow these translation rules for all skill procedures:
 
-- **Path Redirection**: Whenever a skill mentions a path like `~/.claude/skills/gstack/`, substitute it with the project-local `.agents/skills/gstack/` or a workspace-aware `.gstack/` directory.
+- **Path Redirection**: Whenever a skill mentions a path like `./.agents/skills/gstack/`, substitute it with the project-local `.agents/skills/gstack/` or a workspace-aware `.gstack/` directory.
 - **Context Source**: When a skill refers to `CLAUDE.md` as the "Source of Truth" for project context (test commands, deploy settings), use `README.md` or `AGENT.md` instead. If neither exists, project context must be derived via discovery (Grep/Glob).
 - **Tool Names**: Refer to the assistant as **Antigravity** and the toolset as **gStack-Antigravity**.
 

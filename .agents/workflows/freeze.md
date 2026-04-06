@@ -6,7 +6,7 @@ Load identity: [persona-gstack-freeze.md](/.agents/rules/persona-gstack-freeze.m
 ## Phase 1: Setup
 1. Ask the user via `AskUserQuestion` which directory to restrict edits to.
 2. Resolve to an absolute path.
-3. Save the path to `~/.gstack/freeze-dir.txt`.
+3. Save the path to `./.gstack/freeze-dir.txt`.
 
 ## Phase 2: Activation
 1. Inform the user that edits are now restricted.

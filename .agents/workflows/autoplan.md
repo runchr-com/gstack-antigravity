@@ -4,7 +4,7 @@
 Load identity: [persona-gstack-autoplan.md](/.agents/rules/persona-gstack-autoplan.md)
 
 ## Phase 0: Setup & Background
-1.  **Detection:** Run `ls -t ~/.gstack/projects/*/ | head -1` (rebranded to workspace context).
+1.  **Detection:** Run `ls -t ./.gstack/projects/*/ | head -1` (rebranded to workspace context).
 2.  **Restore Point:** Backup the plan file to the current project's brain context.
 3.  **UI Scope:** Scan for `component`, `form`, `screen` to trigger Design Review.
 

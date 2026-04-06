@@ -42,7 +42,7 @@ Tell user: "Auto-upgrade enabled. Future updates will install automatically." Th
 
 **If "Not now":** Write snooze state with escalating backoff (first snooze = 24h, second = 48h, third+ = 1 week), then continue with the current skill. Do not mention the upgrade again.
 ```bash
-_SNOOZE_FILE=~/.gstack/update-snoozed
+_SNOOZE_FILE=./.gstack/update-snoozed
 _REMOTE_VER="{new}"
 _CUR_LEVEL=0
 if [ -f "$_SNOOZE_FILE" ]; then
@@ -58,7 +58,7 @@ echo "$_REMOTE_VER $_NEW_LEVEL $(date +%s)" > "$_SNOOZE_FILE"
 ```
 Note: `{new}` is the remote version from the `UPGRADE_AVAILABLE` output — substitute it from the update check result.
 
-Tell user the snooze duration: "Next reminder in 24h" (or 48h or 1 week, depending on level). Tip: "Set `auto_upgrade: true` in `~/.gstack/config.yaml` for automatic upgrades."
+Tell user the snooze duration: "Next reminder in 24h" (or 48h or 1 week, depending on level). Tip: "Set `auto_upgrade: true` in `./.gstack/config.yaml` for automatic upgrades."
 
 **If "Never ask again":**
 ```bash
@@ -161,10 +161,10 @@ Tell user: "Sync failed — restored previous version at `$LOCAL_GSTACK`. Run `/
 ### Step 5: Write marker + clear cache
 
 ```bash
-mkdir -p ~/.gstack
-echo "$OLD_VERSION" > ~/.gstack/just-upgraded-from
-rm -f ~/.gstack/last-update-check
-rm -f ~/.gstack/update-snoozed
+mkdir -p ./.gstack
+echo "$OLD_VERSION" > ./.gstack/just-upgraded-from
+rm -f ./.gstack/last-update-check
+rm -f ./.gstack/update-snoozed
 ```
 
 ### Step 6: Show What's New

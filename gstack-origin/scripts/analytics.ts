@@ -2,7 +2,7 @@
 /**
  * analytics — CLI for viewing gstack skill usage statistics.
  *
- * Reads ~/.gstack/analytics/skill-usage.jsonl and displays:
+ * Reads ./.gstack/analytics/skill-usage.jsonl and displays:
  *   - Top skills by invocation count
  *   - Per-repo skill breakdown
  *   - Safety hook fire events

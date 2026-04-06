@@ -6,7 +6,7 @@ Load identity: [persona-gstack-office-hours.md](/.agents/rules/persona-gstack-of
 ## Phase 1: Context & Mode Selection
 1. Perform System Audit (docs, history, diff).
 2. User selects Mode: **Startup** (YC Diagnostic) or **Builder** (Design Partner).
-3. Identify relevant prior designs in `~/.gstack/projects/`.
+3. Identify relevant prior designs in `./.gstack/projects/`.
 
 ## Phase 2: The Diagnostic Loop
 1. **Startup Mode:** Ask the Six Forcing Questions (Demand, Status Quo, Specificity, Wedge, Surprise, Future-Fit) one at a time. Push for evidence and specificity.
@@ -20,7 +20,7 @@ Load identity: [persona-gstack-office-hours.md](/.agents/rules/persona-gstack-of
 
 ## Phase 4: Design Documentation
 1. Synthesize **Founder Signals** observed.
-2. Write the comprehensive Design Doc to `~/.gstack/projects/`.
+2. Write the comprehensive Design Doc to `./.gstack/projects/`.
 3. Provide the closing YC-style feedback (The Assignment + What I Noticed).
 
 

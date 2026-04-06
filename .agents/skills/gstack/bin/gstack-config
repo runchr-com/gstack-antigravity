@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# gstack-config — read/write ~/.gstack/config.yaml
+# gstack-config — read/write ./.gstack/config.yaml
 #
 # Usage:
 #   gstack-config get <key>          — read a config value
@@ -7,7 +7,7 @@
 #   gstack-config list               — show all config
 #
 # Env overrides (for testing):
-#   GSTACK_STATE_DIR  — override ~/.gstack state directory
+#   GSTACK_STATE_DIR  — override ./.gstack state directory
 set -euo pipefail
 
 STATE_DIR="${GSTACK_STATE_DIR:-$HOME/.gstack}"

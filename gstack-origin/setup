@@ -130,7 +130,7 @@ if ! ensure_playwright_browser; then
   exit 1
 fi
 
-# 3. Ensure ~/.gstack global state directory exists
+# 3. Ensure ./.gstack global state directory exists
 mkdir -p "$HOME/.gstack/projects"
 
 # ─── Helper: link Claude skill subdirectories into a skills parent directory ──
