@@ -4,6 +4,7 @@
 const fs = require("fs");
 const path = require("path");
 const os = require("os");
+const { execSync } = require("child_process");
 
 function parseArgs(argv) {
   const args = { mode: "auto", target: process.cwd(), help: false, buildGlobal: false };
@@ -98,6 +99,46 @@ function main() {
         fs.cpSync(srcSkills, globalSkillPath, { recursive: true });
         console.log("  Global engine updated.");
      }
+
+     // --- New: Browser Setup for Global Engine ---
+     console.log(`\n🔍 Checking Browser Engine in: ${globalSkillPath}`);
+     const isWindows = os.platform() === 'win32';
+     const browseBin = path.join(globalSkillPath, "browse", "dist", isWindows ? "browse.exe" : "browse");
+     
+     if (!fs.existsSync(browseBin)) {
+       console.log("  Browser binary missing. Building engine (this may take a few seconds)...");
+       try {
+         let pkgManager = "npm";
+         try {
+           execSync("bun --version", { stdio: "ignore" });
+           pkgManager = "bun";
+         } catch (e) {}
+         
+         console.log(`  Using ${pkgManager} to build shared engine...`);
+         execSync(`${pkgManager} install && ${pkgManager} run build`, { 
+           cwd: globalSkillPath, 
+           stdio: "inherit" 
+         });
+       } catch (err) {
+         console.warn(`  Warning: Engine build failed: ${err.message}`);
+         console.log("  (You may need to run 'bun install && bun run build' manually in the engine directory)");
+       }
+     } else {
+       console.log("  ✅ Shared browsing engine detected.");
+     }
+
+     // Ensure Playwright Chromium
+     console.log("  Ensuring Playwright Chromium is ready...");
+     try {
+       // We use npx to ensure the browser binary is present
+       execSync("npx playwright install chromium", { 
+         stdio: "inherit", 
+         cwd: globalSkillPath 
+       });
+       console.log("  ✅ Browser environment ready.");
+     } catch (err) {
+       console.warn(`  Warning: Playwright setup failed: ${err.message}`);
+     }
   }
 
   // 2. Initialize Local Workspace
@@ -157,17 +198,15 @@ function main() {
     console.warn(`  Warning: Could not update ${gitignorePath}: ${err.message}`);
   }
 
-  console.log("\n✅ gStack-Antigravity initialized successfully!");
+  console.log("\n✅ gStack-Antigravity is ready to use!");
   console.log("----------------------------------------------");
   console.log(`  Engine (Shared) : ${globalSkillPath}`);
   console.log(`  Router (Local) : ${targetAgentsRoot}`);
   console.log(`  Data   (Local) : .gstack/`);
   console.log("\n🚀 Next Step:");
-  console.log("  1. In the SAME project root directory, open Antigravity.");
-  console.log("  2. Enter the following command in the Antigravity chat window:");
-  console.log("\n     /gstack-setup");
-  console.log("\n  This will verify the environment. If the global engine");
-  console.log("  already has built binaries, it will be instant!");
+  console.log("  1. Open Antigravity in this project.");
+  console.log("  2. You can now use /office-hours, /qa, /review, etc.");
+  console.log("\n  Tip: If you encounter issues, run /gstack-setup in chat.");
   console.log("----------------------------------------------\n");
 }
 

@@ -13,11 +13,17 @@ This workflow ensures the workspace is ready for gStack-Antigravity operations, 
 3. Detect installation mode: **Local Clone** (scripts/ exists) or **Initialized Workspace** (only .agents/ exists).
 
 // turbo
-## Phase 2: Engine Verification
-1. Verify `.agents/skills/gstack` exists. 
-   - If missing, alert the user to run: `npx @runchr/gstack-antigravity`.
-2. Check if the skill is linked to the **Standard Global Store** (`~/.gemini/antigravity/skills/gstack`).
-   - If it is a copy, inform the user about the benefits of switching to a linked setup (`gstack-antigravity init`).
+## Phase 2: Project Initialization (Auto-Bootstrap)
+1. Verify if the local skill router exists at `.agents/skills/gstack`.
+2. **If missing (Self-Bootstrap)**:
+   - Identify the global engine store: `~/.gemini/antigravity/skills/gstack`.
+   - If found, **automatically initialize the project**:
+     - Link the engine: `ln -s ~/.gemini/antigravity/skills/gstack .agents/skills/gstack`.
+     - Copy latest rules and workflows from the engine if needed.
+     - You may also run `gstack-antigravity init` if the command is available in PATH.
+   - If the global engine is also missing, explain to the user that they must install the package first: `npm install -g @runchr/gstack-antigravity`.
+3. Check if the skill is linked to the **Standard Global Store**.
+   - If it is a hard copy instead of a symlink, recommend switching to a linked setup for better performance and updates.
 
 // turbo
 ## Phase 3: Browser Setup (Shared)

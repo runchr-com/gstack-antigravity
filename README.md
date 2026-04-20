@@ -20,29 +20,33 @@ gStack-Antigravity solves these using:
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Getting Started (Pick One)
 
-### 1. Experts & End Users (Recommended)
-The fastest way to add gStack powers to your project. This single command handles both global engine installation and local workspace initialization:
+gStack-Antigravity offers two paths for installation. Choose the one that fits your workflow. Both result in a fully optimized environment.
+
+### Option A. Manual Initialization via Terminal (Recommended for Pros)
+Initialize the project and build the browser engine in a single command.
 ```bash
-# MUST be run in your project's root directory:
-npx @runchr/gstack-antigravity
+# 1. Global Installation (One-time setup)
+npm install -g @runchr/gstack-antigravity
+
+# 2. Initialize in your project root
+gstack-antigravity init
 ```
-Then, open Antigravity and **enter `/gstack-setup` in the chat window** to allow the AI to orient itself and perform a final health check:
+
+### Option B. Automated Setup via AI Chat (Recommended for Beginners)
+If the package is installed globally, you can let the AI handle the rest inside the Antigravity chat.
+```bash
+# 1. Global Installation (One-time setup)
+npm install -g @runchr/gstack-antigravity
+```
+Then open Antigravity and enter the following command in the chat:
 ```bash
 /gstack-setup
 ```
+> [!TIP]
+> The AI will detect the missing local configuration and automatically bootstrap the project by fetching rules and workflows from the global engine.
 
-### 2. Developers & Global Installers
-If you prefer to install the engine globally and share it across multiple projects:
-```bash
-# Global installation
-npm install -g @runchr/gstack-antigravity
-
-# Initialize a new workspace
-cd my-new-project
-gstack-antigravity init
-```
 
 > [!TIP]
 > **Shared Global Engine**: This package stores the engine in `~/.gemini/antigravity/skills/gstack`. Because the engine and binaries are shared, the setup for your second project onwards will be **Instant**.

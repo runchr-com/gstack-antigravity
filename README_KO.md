@@ -20,29 +20,35 @@ gStack-Antigravity는 이를 다음과 같이 해결합니다:
 
 ---
 
-## 🚀 시작하기
+## 🚀 시작하기 (택 1)
 
-### 1. 전문가 및 일반 사용자 (권장)
-가장 빠르고 간편한 설치 방법입니다. 한 번의 실행으로 전역 엔진 설치와 프로젝트 초기화가 동시에 완료됩니다:
+gStack-Antigravity는 두 가지 설치 경로를 제공합니다. 본인에게 더 편한 방식을 선택하세요. 어느 경로를 선택하든 동일하게 최적화된 환경이 구성됩니다.
+
+### 방법 A. 터미널에서 직접 초기화 (숙련자 권장)
+터미널 명령어 한 번으로 프로젝트 초기화와 브라우저 엔진 빌드까지 즉시 완료합니다.
 ```bash
-# 반드시 프로젝트의 루트 디렉토리에서 실행하세요:
-npx @runchr/gstack-antigravity
+# 1. 패키지 전역 설치 (최초 1회)
+npm install -g @runchr/gstack-antigravity
+
+# 2. 프로젝트 루트 디렉토리에서 실행
+gstack-antigravity init
 ```
-설치 후 Antigravity를 열고, **AI가 프로젝트를 인식하고 환경을 최종 점검할 수 있도록** 채팅창에 명령어를 입력하세요:
+
+### 방법 B. AI 채팅에서 자동 초기화 (초보자 권장)
+전역 설치만 되어 있다면, 상세 설정은 Antigravity 채팅창에서 AI에게 맡길 수 있습니다.
+```bash
+# 1. 패키지 전역 설치 (최초 1회)
+npm install -g @runchr/gstack-antigravity
+```
+설치 후 Antigravity를 열고 채팅창에 다음 명령어를 입력하세요:
 ```bash
 /gstack-setup
 ```
+> [!TIP]
+> AI가 로컬 설정을 감지하고, 필요한 스킬과 워크플로우를 전역 엔진에서 자동으로 가져와 환경을 구축합니다.
 
-### 2. 개발자 및 전역 설치 선호자
-엔진을 컴퓨터에 미리 깔아두고 여러 프로젝트에서 공유하려는 경우:
-```bash
-# 전역 설치
-npm install -g @runchr/gstack-antigravity
+---
 
-# 새 프로젝트에서 초기화
-cd my-new-project
-gstack-antigravity init
-```
 
 > [!TIP]
 > **표준 저장소 사용**: 이 패키지는 안티그래비티 표준에 따라 `~/.gemini/antigravity/skills/gstack`에 엔진을 보관합니다. 공유 엔진을 사용하므로 두 번째 프로젝트부터는 설치와 `/gstack-setup`이 **즉시(Instant)** 완료됩니다.
