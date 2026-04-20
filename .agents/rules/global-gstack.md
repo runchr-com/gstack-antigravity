@@ -2,9 +2,18 @@
 
 gStack-Antigravity is an independent port. Follow these translation rules for all skill procedures:
 
-- **Path Redirection**: Whenever a skill mentions a path like `./.agents/skills/gstack/`, substitute it with the project-local `.agents/skills/gstack/` or a workspace-aware `.gstack/` directory.
-- **Context Source**: When a skill refers to `CLAUDE.md` as the "Source of Truth" for project context (test commands, deploy settings), use `README.md` or `AGENT.md` instead. If neither exists, project context must be derived via discovery (Grep/Glob).
+- **Path Redirection**: Whenever a skill mentions a path like `./.agents/skills/gstack/`, substitute it with the project-local `.agents/skills/gstack/` or a workspace-aware `./.gstack/` directory.
+- **Context Source**: When a skill refers to `CLAUDE.md` as the "Source of Truth" for project context, use `README.md` or `AGENT.md`.
 - **Tool Names**: Refer to the assistant as **Antigravity** and the toolset as **gStack-Antigravity**.
+
+## Workspace Isolation & Shared Engine
+
+To ensure privacy and avoid context leakage between projects when using a shared global engine:
+
+1. **Working Directory (CWD) Authority**: ALWAYS treat the current working directory as the primary data store. No logs, traces, or temporary files should EVER be written to the shared engine directory (`~/.gemini/antigravity/skills/gstack`).
+2. **Local Work Logs**: Store all session-specific snapshots, screenshots, and trace logs in the project-local `./.gstack/` directory. Create it if missing.
+3. **Local Rules Authority**: Prefer `./.agents/rules/` and `./.agents/workflows/` for project-specific behavior over any global defaults.
+4. **Isolated Memory**: Do not attempt to read session history or screenshots from other projects. If you need historical context, it must be contained within the current workspace's `./.gstack/` folder.
 
 ## Browser Tooling Bridge
 

@@ -4,7 +4,7 @@
 
 **gStack-Antigravity** is a high-performance, team-ready port of [garrytan/gstack](https://github.com/garrytan/gstack) built natively for the **Antigravity** agent environment.
 
-It brings the original gStack's elite developer workflows and browser automation to Antigravity with a **Thin Router** architecture that prioritizes token efficiency and cross-platform reliability.
+It utilizes a **Thin Router** architecture and a **Standard-Compliant Shared Engine** to prioritize token efficiency, cross-platform reliability, and workspace isolation.
 
 ---
 
@@ -13,35 +13,39 @@ It brings the original gStack's elite developer workflows and browser automation
 Developing AI workflows often hits two bottlenecks: **Token Exhaustion** and **Execution Drift**. 
 
 gStack-Antigravity solves these using:
-- **Thin Router Architecture**: Instead of loading 30,000+ tokens of logic every session, we use lightweight rules (`.agents/rules/`) that act as routers. They pull the exact "Source of Truth" from `gstack-origin/` only when a specific command is invoked.
-- **Native Browser Integration**: We use Antigravity's native `browser_subagent` and `read_browser_page` tools as a first-class bridge, ensuring faster, more visual feedback.
-- **Cross-Platform Parity**: Specialized support for macOS, Linux, and Windows (PowerShell).
+- **Thin Router Architecture**: Instead of copying all logic to every project, we keep lightweight rules (`.agents/rules/`) locally. The heavy engine is shared globally for efficiency.
+- **Standard Compliance & Isolation**: We follow Antigravity standards by storing the engine in `~/.gemini/antigravity/skills/`, while ensuring project-level data (`.gstack/`) remains strictly isolated.
+*   **Native Browser Integration**: We use Antigravity's native `browser_subagent` tools as a first-class bridge, ensuring faster, more visual feedback.
+*   **Cross-Platform Parity**: Specialized support for macOS, Linux, and Windows.
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. End Users (Recommended)
-The fastest way to add gStack powers to your project:
+### 1. Experts & End Users (Recommended)
+The fastest way to add gStack powers to your project. This single command handles both global engine installation and local workspace initialization:
 ```bash
 # MUST be run in your project's root directory:
 npx @runchr/gstack-antigravity
 ```
-Then, open Antigravity in your project and **enter `/gstack-setup` in the chat window**:
+Then, open Antigravity and **enter `/gstack-setup` in the chat window** to allow the AI to orient itself and perform a final health check:
 ```bash
 /gstack-setup
 ```
 
-### 2. Contributors & Developers
-If you want to modify gStack-Antigravity or sync with upstream:
+### 2. Developers & Global Installers
+If you prefer to install the engine globally and share it across multiple projects:
 ```bash
-git clone https://github.com/runchr-com/gstack-antigravity.git
-cd gstack-antigravity
-/gstack-setup
+# Global installation
+npm install -g @runchr/gstack-antigravity
+
+# Initialize a new workspace
+cd my-new-project
+gstack-antigravity init
 ```
 
-> [!NOTE]
-> The `/gstack-setup` command is essential because it builds platform-specific browser binaries (which cannot be pre-bundled in npm).
+> [!TIP]
+> **Shared Global Engine**: This package stores the engine in `~/.gemini/antigravity/skills/gstack`. Because the engine and binaries are shared, the setup for your second project onwards will be **Instant**.
 
 ---
 

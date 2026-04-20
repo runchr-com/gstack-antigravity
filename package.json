@@ -1,6 +1,6 @@
 {
   "name": "@runchr/gstack-antigravity",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "description": "Local installer for gStack-Antigravity (.agents layout)",
   "keywords": [
@@ -23,7 +23,6 @@
     "scripts/",
     ".agents/workflows/",
     ".agents/rules/",
-    ".agents/skills/",
     "gstack-origin/",
     "README.md",
     "README_KO.md",

@@ -4,7 +4,7 @@
 
 **gStack-Antigravity**는 [garrytan/gstack](https://github.com/garrytan/gstack)의 강력한 에이전트 워크플로우와 브라우저 자동화를 **Antigravity** 환경에 맞게 네이티브로 이식한 고성능 팀용 포트입니다.
 
-토큰 효율성을 극대화한 **Thin Router** 아키텍처와 크로스 플랫폼(macOS, Linux, Windows) 지원을 통해 Antigravity에서 최상의 AI 협업 경험을 제공합니다.
+토큰 효율성을 극대화한 **Thin Router** 아키텍처와 **표준 준수형 전역 엔진(Shared Engine)** 방식을 통해 최상의 AI 협업 경험을 제공합니다.
 
 ---
 
@@ -13,7 +13,8 @@
 AI 워크플로우 개발은 보통 두 가지 병목 현상에 부딪힙니다: **토큰 과소비**와 **실행 일관성 부재** 
 
 gStack-Antigravity는 이를 다음과 같이 해결합니다:
-- **Thin Router 아키텍처**: 세션마다 3만 개 이상의 토큰을 로드하는 대신, 가벼운 규칙(`.agents/rules/`)을 라우터로 활용합니다. 특정 명령어가 호출될 때만 `gstack-origin/`에서 필요한 "Source of Truth"를 읽어옵니다.
+- **Thin Router 아키텍처**: 모든 로직을 프로젝트마다 복사하는 대신, 가벼운 규칙(`.agents/rules/`)만 로컬에 둡니다. 무거운 엔진은 전역 공간에서 공유되어 효율적입니다.
+- **표준 준수 및 격리**: 안티그래비티 표준 저장소(`~/.gemini/antigravity/skills`)를 사용하며, 프로젝트별 작업 로그(`.gstack/`)는 철저히 격리됩니다.
 *   **네이티브 브라우저 통합**: Antigravity의 네이티브 `browser_subagent` 도구를 일급 브리지로 사용하여 시각적으로 빠르고 정확한 피드백을 제공합니다.
 *   **크로스 플랫폼 지원**: macOS, Linux, Windows(PowerShell) 등 모든 환경에서 동일한 경험을 하도록 보정되었습니다.
 
@@ -21,27 +22,30 @@ gStack-Antigravity는 이를 다음과 같이 해결합니다:
 
 ## 🚀 시작하기
 
-### 1. 일반 사용자 (추천)
-가장 빠르고 간편한 설치 방법입니다:
+### 1. 전문가 및 일반 사용자 (권장)
+가장 빠르고 간편한 설치 방법입니다. 한 번의 실행으로 전역 엔진 설치와 프로젝트 초기화가 동시에 완료됩니다:
 ```bash
 # 반드시 프로젝트의 루트 디렉토리에서 실행하세요:
 npx @runchr/gstack-antigravity
 ```
-설치 후, Antigravity를 열고 **채팅창에 `/gstack-setup`을 입력하세요**:
+설치 후 Antigravity를 열고, **AI가 프로젝트를 인식하고 환경을 최종 점검할 수 있도록** 채팅창에 명령어를 입력하세요:
 ```bash
 /gstack-setup
 ```
 
-### 2. 개발자 및 기여자
-소스 코드를 수정하거나 업스트림과 동기화하려는 경우:
+### 2. 개발자 및 전역 설치 선호자
+엔진을 컴퓨터에 미리 깔아두고 여러 프로젝트에서 공유하려는 경우:
 ```bash
-git clone https://github.com/runchr-com/gstack-antigravity.git
-cd gstack-antigravity
-/gstack-setup
+# 전역 설치
+npm install -g @runchr/gstack-antigravity
+
+# 새 프로젝트에서 초기화
+cd my-new-project
+gstack-antigravity init
 ```
 
-> [!NOTE]
-> `/gstack-setup` 명령어는 플랫폼별 브라우저 바이너리를 빌드하기 위해 반드시 한 번 실행해야 합니다 (npm에 빌드된 바이너리를 포함할 수 없기 때문입니다).
+> [!TIP]
+> **표준 저장소 사용**: 이 패키지는 안티그래비티 표준에 따라 `~/.gemini/antigravity/skills/gstack`에 엔진을 보관합니다. 공유 엔진을 사용하므로 두 번째 프로젝트부터는 설치와 `/gstack-setup`이 **즉시(Instant)** 완료됩니다.
 
 ---
 
