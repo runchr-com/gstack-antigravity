@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Import real browser cookies from Chrome/Arc/Edge for authenticated scraping.
+---
+
 # /setup-browser-cookies: Import Browser Cookies
 
 Load identity: [persona-gstack-setup-browser-cookies.md](/.agents/rules/persona-gstack-setup-browser-cookies.md)

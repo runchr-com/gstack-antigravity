@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Chief Security Officer audit focusing on OWASP Top 10 and STRIDE threat modeling.
+---
+
 # /cso: Chief Security Officer Audit
 
 Load identity: [persona-gstack-cso.md](/.agents/rules/persona-gstack-cso.md)

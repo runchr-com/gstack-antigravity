@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Combined workflow for merging PRs, triggering deployment, and verification.
+---
+
 # /land-and-deploy: Merge, Deploy, Verify
 
 Load identity: [persona-gstack-land-and-deploy.md](/.agents/rules/persona-gstack-land-and-deploy.md)

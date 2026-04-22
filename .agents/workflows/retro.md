@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Engineering retrospective analysis of commits, metrics, and team trends.
+---
+
 # /retro: Engineering Retrospective
 
 Load identity: [persona-gstack-retro.md](/.agents/rules/persona-gstack-retro.md)

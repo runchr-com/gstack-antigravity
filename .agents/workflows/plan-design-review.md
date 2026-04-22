@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Designer's audit of your implementation plan covering UX, UI, and emotional arc.
+---
+
 # /plan-design-review: Designer's Eye Plan Review
 
 Load identity: [persona-gstack-plan-design-review.md](/.agents/rules/persona-gstack-plan-design-review.md)

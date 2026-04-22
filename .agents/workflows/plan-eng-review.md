@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Technical audit of implementation plans for race conditions and edge cases.
+---
+
 # /plan-eng-review: Architecture & Execution Review
 
 Load identity: [persona-gstack-plan-eng-review.md](/.agents/rules/persona-gstack-plan-eng-review.md)

@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Post-ship documentation updates based on git history and diff analysis.
+---
+
 # /document-release: Post-Ship Documentation Update
 
 Load identity: [persona-gstack-document-release.md](/.agents/rules/persona-gstack-document-release.md)

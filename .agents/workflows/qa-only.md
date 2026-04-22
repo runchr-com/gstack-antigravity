@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Automated browser QA testing that generates a report without auto-fixing.
+---
+
 # /qa-only: Report-Only QA Testing
 
 Load identity: [persona-gstack-qa-only.md](/.agents/rules/persona-gstack-qa-only.md)

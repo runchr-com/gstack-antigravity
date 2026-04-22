@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Remove edit restrictions and allow model to edit all directories.
+---
+
 # /unfreeze: Remove Edit Restrictions
 
 Load identity: [persona-gstack-unfreeze.md](/.agents/rules/persona-gstack-unfreeze.md)

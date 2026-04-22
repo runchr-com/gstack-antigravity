@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Design System implementation and proposal covering aesthetic, layout, and motion.
+---
+
 # /design-consultation: Design System Implementation
 
 Load identity: [persona-gstack-design-consultation.md](/.agents/rules/persona-gstack-design-consultation.md)

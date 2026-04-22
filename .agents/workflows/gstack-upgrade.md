@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Sync local gstack-origin with the upstream garrytan/gstack repository.
+---
+
 # /gstack-upgrade: Sync to Latest gStack Origin
 
 Load identity: [persona-gstack-gstack-upgrade.md](/.agents/rules/persona-gstack-gstack-upgrade.md)

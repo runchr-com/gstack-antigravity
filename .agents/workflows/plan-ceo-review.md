@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Strategic challenge of your current plan focusing on scope and value.
+---
+
 # /plan-ceo-review: Strategy & Ambition Review
 
 Load identity: [persona-gstack-plan-ceo-review.md](/.agents/rules/persona-gstack-plan-ceo-review.md)

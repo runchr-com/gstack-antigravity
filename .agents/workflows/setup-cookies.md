@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Alias for /setup-browser-cookies.
+---
+
 # /setup-cookies (alias)
 
 Alias for `/setup-browser-cookies`.

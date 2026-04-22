@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Configure deployment platform, production URLs, and health checks.
+---
+
 # /setup-deploy: Configure Deployment
 
 Load identity: [persona-gstack-setup-deploy.md](/.agents/rules/persona-gstack-setup-deploy.md)

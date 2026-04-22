@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: YC-Style Brainstorming session for new ideas. Focuses on product-market fit and user pain.
+---
+
 # /office-hours: YC-Style Brainstorming
 
 Load identity: [persona-gstack-office-hours.md](/.agents/rules/persona-gstack-office-hours.md)

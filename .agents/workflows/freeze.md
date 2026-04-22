@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Restrict model edits to a specific directory for safety.
+---
+
 # /freeze: Restrict Edits to a Directory
 
 Load identity: [persona-gstack-freeze.md](/.agents/rules/persona-gstack-freeze.md)

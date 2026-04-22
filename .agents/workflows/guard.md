@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Full safety mode combined careful command guarding and edit freezing.
+---
+
 # /guard: Full Safety Mode
 
 Load identity: [persona-gstack-guard.md](/.agents/rules/persona-gstack-guard.md)

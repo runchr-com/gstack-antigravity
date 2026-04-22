@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Visual QA and polish audit based on DESIGN.md and best practices.
+---
+
 # /design-review: Visual QA & Polish
 
 Load identity: [persona-gstack-design-review.md](/.agents/rules/persona-gstack-design-review.md)

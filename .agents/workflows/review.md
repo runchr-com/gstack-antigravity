@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: In-depth pre-landing code review covering safety and quality.
+---
+
 # /review: Pre-Landing PR Review
 
 Load identity: [persona-gstack-review.md](/.agents/rules/persona-gstack-review.md)

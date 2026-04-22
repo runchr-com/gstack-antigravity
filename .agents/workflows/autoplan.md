@@ -1,4 +1,8 @@
 // turbo-all
+---
+description: Runs CEO, Design, and Eng reviews sequentially in one session.
+---
+
 # /autoplan: Auto-Review Eng Pipeline
 
 Load identity: [persona-gstack-autoplan.md](/.agents/rules/persona-gstack-autoplan.md)
