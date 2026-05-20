@@ -1,3 +1,28 @@
+> [!IMPORTANT]
+>
+> ## Compatibility Notice — Antigravity 2.0
+>
+> Due to breaking changes introduced in **Antigravity v2.0**, the previous skill path conventions used in this repository are no longer compatible.
+>
+> Some skills may not execute properly until they are migrated to the new structure required by Antigravity 2.0.
+>
+> ### Current Status
+>
+> * Legacy structure: ❌ Deprecated
+> * Antigravity 2.0 support: 🚧 In Progress
+> * Migration guide: Coming soon
+>
+> ### Repository Status
+>
+> This repository is no longer actively maintained.
+>
+> Development has been moved to a new repository with a redesigned structure optimized for Antigravity 2.0 and future multi-agent workflows.
+>
+> Please follow future updates in the new repository.
+>
+> Thank you to everyone who supported and used this project.
+
+
 # gStack-Antigravity 🚀
 
 [한국어 README](./README_KO.md)
